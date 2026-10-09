@@ -16,6 +16,7 @@ jobs:
           extensions: pdo_sqlite
           tools: composer:v2
       - run: composer install --no-interaction --prefer-dist
+      - run: cp .env.example .env && php artisan key:generate
       - run: vendor/bin/pint --test
       - run: php artisan test
       - uses: actions/setup-node@v4
